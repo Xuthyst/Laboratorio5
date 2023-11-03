@@ -27,7 +27,7 @@ short sampleBuffer[512];
 volatile int samplesRead;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
 
   // Configure the data receive callback

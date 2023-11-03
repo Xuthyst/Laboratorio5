@@ -1,33 +1,37 @@
-#!/usr/bin/python3
 import serial
-import csv
+import sys
 import numpy as np
+import time
 import wave
-ser = serial.Serial(
-    port='COM3',
-    baudrate=9600,
-    parity=serial.PARITY_NONE,
-    stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=200
-)
-valores = []
-print("Conectado a: " + ser.portstr)
-print("Leyendo y mostrando lectura de puerto serial: ")
-while(1):
-    linea_serie = ser.readline().decode().strip()
-    print("El valor actual es: " + linea_serie)
-    if(linea_serie == "EOF"):
-        print("La transmisión de datos finalizo")
-        break
-    valores.append(linea_serie)
-print("Estos son los valores:")
-#print(valores)
-# Convierte los datos en un arreglo de números
-audio_data = np.array([int(value) for value in valores])
-print(audio_data)
-# Crea un archivo de audio WAV
-with wave.open('audio_output.wav', 'w') as audio_file:
-    audio_file.setparams((1, 2, 16000, 0, 'NONE', 'not compressed'))
-    audio_file.writeframes(audio_data.tobytes())
-ser.close()
+
+def record_audio(time_stamp,serial_port_name,sample_length):
+    print("Start audio recording...")
+    ser = serial.Serial(serial_port_name, 115200, timeout=None)     # Create Serial link
+    result_ = ""
+    samples = int(16000 * sample_length)
+    lista = []
+    start_time = time.time()
+    for x in range(samples):
+      ser.read_until()
+      cc1 = ser.read(2)
+      lista.append(int.from_bytes(cc1, "big"))
+    print("Stop audio recording.")
+    print("Audio length:",time.time()-start_time)
+    #NUEVO
+    print("Saving audio...")
+    # Crea un archivo de audio WAV
+    # Convierte los datos en un arreglo de números
+    audio_data = np.array([int(value) for value in lista])
+    with wave.open('audio_output.wav', 'w') as audio_file:
+        audio_file.setparams((1, 2, 32000, 0, 'NONE', 'not compressed'))
+        audio_file.writeframes(audio_data.tobytes())
+    ser.close()
+    audio_file.close()
+
+if __name__ == '__main__':
+    #Importing sys parameters
+    print("TEST MODE audio !")
+    par_time_stamp = "test"
+    par_serial_port_name = "COM3"
+    par_sample_length = 5
+    record_audio(par_time_stamp,par_serial_port_name,par_sample_length)#!/usr/bin/python3

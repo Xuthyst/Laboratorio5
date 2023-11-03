@@ -15,7 +15,7 @@ bool record = false;
 bool commandRecv = false;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);  
 
   // Initialize the TinyML Shield
@@ -71,6 +71,7 @@ void loop() {
     samplesRead = 0;
   } 
 }
+
 
 void onPDMdata() {
   // query the number of bytes available
