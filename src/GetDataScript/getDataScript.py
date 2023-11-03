@@ -22,7 +22,7 @@ def record_audio(time_stamp,serial_port_name,sample_length):
     # Crea un archivo de audio WAV
     # Convierte los datos en un arreglo de números
     audio_data = np.array([int(value) for value in lista])
-    with wave.open('audio_output.wav', 'w') as audio_file:
+    with wave.open('audio/audio_output.wav', 'w') as audio_file:
         audio_file.setparams((1, 2, 32000, 0, 'NONE', 'not compressed'))
         audio_file.writeframes(audio_data.tobytes())
     ser.close()

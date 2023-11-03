@@ -41,7 +41,7 @@ void loop() {
       sampleBuffer_8bit[sb_index] = (sampleBuffer[i] >> 8) & 0xFF;
       sb_index ++;
       sampleBuffer_8bit[sb_index] = (sampleBuffer[i] & 0xFF);
-      sb_index ++
+      sb_index ++;
       //Sending data via SerialUSB
       if (sb_index >= 1536){
         SerialUSB.write(sampleBuffer_8bit,sb_index);
