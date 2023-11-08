@@ -31,7 +31,7 @@ i = 0
 j = 0
 lista = []
 dictionary = dict()
-while i<12:
+while i<12:#Taking 3 test 
     data_captured = ser.readline().decode().strip().split()
     data_captured[1] = float(data_captured[1])
     lista.append(data_captured)
@@ -39,17 +39,17 @@ while i<12:
     j+=1
     val_max = 0
     command_selected = ""
-    if(j == 3):
+    if(j == 4):
         for item in lista:
             if(item[1] > val_max):
                 val_max = item[1]
                 command_selected = item[0]
         dictionary["command"] = command_selected
         output = json.dumps(dictionary)
-        print(output)
+        #print(output)
         #client.publish(topic, output)
-        #print(lista)
-        #print("El comando es: " + command_selected)
+        print(lista)
+        print("El comando es: " + command_selected)
         j = 0
         lista = []
 ser.close()

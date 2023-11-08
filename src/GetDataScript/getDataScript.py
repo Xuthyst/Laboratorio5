@@ -2,7 +2,7 @@ import serial
 import numpy as np
 import time
 import wave
-sample_length = 60
+sample_length = 90
 serial_port_name = "COM3"
 print("Start audio recording...")
 ser = serial.Serial(serial_port_name, 115200, timeout=None)     # Create Serial link
@@ -15,7 +15,7 @@ for x in range(samples):
     cc1 = ser.read(2)
     lista.append(int.from_bytes(cc1, "big"))
 print("Stop audio recording.")
-print("Audio length:",time.time()-start_time)
+print("Audio length: " + str(time.time()-start_time) + " segundos")
 print("Saving audio...")
 audio_data = np.array([int(value) for value in lista])
 with wave.open('audio/audio_output.wav', 'w') as audio_file:
