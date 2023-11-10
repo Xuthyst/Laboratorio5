@@ -1,11 +1,3 @@
-/*
-# Progetto di Tesi su:
-# Classificazione su base audio del traffico con algoritmi di TinyML su dispositivi embedded
-# Autore: Francesco Maccantelli
-# Data: 20/05/2022
-# Università degli Studi di Siena
-# Software di Calibrazione - Acquisizione dati
-*/
 #include <PDM.h>
 // default number of output channels
 static const char channels = 1;
@@ -52,11 +44,6 @@ void loop() {
     samplesRead = 0;
   }
 }
-/**
- * Callback function to process the data from the PDM microphone.
- * NOTE: This callback is executed as part of an ISR.
- * Therefore using `Serial` to print messages inside this function isn't supported.
- * */
 void onPDMdata() {
   // Query the number of available bytes
   int bytesAvailable = PDM.available();

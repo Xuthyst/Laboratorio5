@@ -15,7 +15,7 @@ ser = serial.Serial(
     bytesize=serial.EIGHTBITS,\
     timeout=200\
 )
-print("Connected to: " + ser.portstr)
+print("Connected to: " + ser.portstr + "\n")
 #Datos para la conexión con el cliente:
 # broker = "iot.eie.ucr.ac.cr"
 # port = 1883
@@ -31,7 +31,7 @@ i = 0
 j = 0
 lista = []
 dictionary = dict()
-while i<12:#Taking 3 test 
+while i<16:#Taking 3 test 
     data_captured = ser.readline().decode().strip().split()
     data_captured[1] = float(data_captured[1])
     lista.append(data_captured)
@@ -48,8 +48,10 @@ while i<12:#Taking 3 test
         output = json.dumps(dictionary)
         #print(output)
         #client.publish(topic, output)
+        print("Los datos recibidos son:")
         print(lista)
-        print("El comando es: " + command_selected)
+        print("Identificando comando recibido...")
+        print("El comando es: " + command_selected + "\n")
         j = 0
         lista = []
 ser.close()

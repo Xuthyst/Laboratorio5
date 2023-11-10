@@ -1,0 +1,72 @@
+<mxfile host="Electron" modified="2023-11-10T17:26:35.272Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="dxo8q4dhTFW1-sJjfOaI" version="22.0.2" type="device" pages="2">
+  <diagram name="Diagrama1" id="ZGacUDwTPWCcH7QmUrja">
+    <mxGraphModel dx="1034" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cPry1aEU6FZ5ElTkHZyO-1" target="cPry1aEU6FZ5ElTkHZyO-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-1" value="Incluir Biblioteca PDM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="340" y="30" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cPry1aEU6FZ5ElTkHZyO-2" target="cPry1aEU6FZ5ElTkHZyO-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-2" value="Crear variables y buffers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="345" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cPry1aEU6FZ5ElTkHZyO-4" target="cPry1aEU6FZ5ElTkHZyO-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-4" value="Iniciar comunicación serial y PDM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="345" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cPry1aEU6FZ5ElTkHZyO-6" target="cPry1aEU6FZ5ElTkHZyO-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-6" value="Lectura de datos mediante ISR" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="345" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cPry1aEU6FZ5ElTkHZyO-8" value="Enviar datos por USB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="345" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="AJSjojwjHWwHsYXBmAJl" name="Diagrama2">
+    <mxGraphModel dx="954" dy="664" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qzUO7Ohw0IWl8h4MbPmP-1" target="qzUO7Ohw0IWl8h4MbPmP-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-1" value="Incluir bibliotecas necesarias" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="400" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qzUO7Ohw0IWl8h4MbPmP-2" target="qzUO7Ohw0IWl8h4MbPmP-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-2" value="Definir tiempo de grabación en segundos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qzUO7Ohw0IWl8h4MbPmP-3" target="qzUO7Ohw0IWl8h4MbPmP-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-3" value="Abrir comunicación serial" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qzUO7Ohw0IWl8h4MbPmP-5" target="qzUO7Ohw0IWl8h4MbPmP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-5" value="Lectura de los bytes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qzUO7Ohw0IWl8h4MbPmP-7" value="Guardar audio en formato .wav" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="400" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
