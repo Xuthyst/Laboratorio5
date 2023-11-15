@@ -10,7 +10,6 @@ def on_publish(client,userdata,result):             #create function for callbac
 broker = "iot.eie.ucr.ac.cr"
 port = 1883
 topic = "v1/devices/me/telemetry"
-topicreq = "v1/devices/me/attributes/request/1"
 username = "NANO_10_SD"
 password = "r83olk7lufc6wh3yj7wo"    
 #Establecemos los parámetros de conexión
@@ -36,6 +35,27 @@ while (1):
             command_selected = item[0]
     
     dictionary["command"] = command_selected
+
+    if(command_selected == "musica"):
+        dictionary["musica"] = "Sonando"
+    else:
+        dictionary["musica"] = "Silencio"
+
+    if(command_selected == "luces"):
+        dictionary["luces"] = "Encendidas"
+    else:
+        dictionary["luces"] = "Apagadas" 
+
+    if(command_selected == "puerta"):
+        dictionary["puerta"] = "Abierta"
+    else:
+        dictionary["puerta"] = "Cerrada" 
+
+    if(command_selected == "ruido"):
+        dictionary["ruido"] = "Ruido"
+    else:
+        dictionary["ruido"] = "No Ruido" 
+
     output = json.dumps(dictionary)
     
     if i>5:
@@ -53,8 +73,7 @@ while (1):
         if x == 4:
             x = 0
     
-    #client.publish(topic, output)
-    client.publish(topicreq, output)
+    client.publish(topic, output)
 
     #print("Los datos recibidos son:")
     #print(data_captured)
