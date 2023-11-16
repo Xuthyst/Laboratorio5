@@ -1,12 +1,22 @@
 #!/usr/bin/python3
+import serial
 import paho.mqtt.client as mqtt
 import json
 import time
 #Functions
 def on_publish(client,userdata,result):             #create function for callback
-    print("data published to thingsboard \n")
+    print("Data published to thingsboard \n")
     pass
-
+#Serial connection
+ser = serial.Serial(
+    port='COM3',\
+    baudrate=115200,\
+    parity=serial.PARITY_NONE,\
+    stopbits=serial.STOPBITS_ONE,\
+    bytesize=serial.EIGHTBITS,\
+    timeout=200\
+)
+print("Connected to: " + ser.portstr + "\n")
 #Datos para la conexión con el cliente:
 broker = "iot.eie.ucr.ac.cr"
 port = 1883
@@ -18,71 +28,54 @@ client = mqtt.Client(username)
 client.on_publish = on_publish
 client.username_pw_set(password)
 client.connect(broker, port, keepalive=60)
-
+#Variables
 i = 0
+j = 0
 x = 0
 valorinicial = False
 lista = []
-data_captured = [['luces', 0.0], ['musica', 0.0], ['puerta', 0.99609], ['ruido', 0.0]]
-dictionary = dict() 
+dictionary = dict()
 
-while (1):  
-    time.sleep(2)
-    i+=1
+while(1):
+    data_captured = ser.readline().decode().strip().split()
+    data_captured[1] = float(data_captured[1])
+    lista.append(data_captured)
+    i+=1   
+    j+=1
     val_max = 0
     command_selected = ""
-    for item in data_captured:
-        #print(item)
-        if(item[1] > val_max):
-            val_max = item[1]
-            command_selected = item[0]
-    
-    dictionary["command"] = command_selected
-
-    #Valores Iniciales
-    if(valorinicial == False):
-        dictionary["musica"] = "Silencio"
-        dictionary["luces"] = "Apagadas"
-        dictionary["puerta"] = "Cerrada"
-        valorinicial = True
-
-    if(command_selected == "musica"):
-        if (dictionary["musica"] == "Sonando"):
+    if(j == 4):
+        for item in lista:
+            if(item[1] > val_max):
+                val_max = item[1]
+                command_selected = item[0]
+        dictionary["command"] = command_selected
+        print("El comando elegido es: " + command_selected)
+        #Valores Iniciales
+        if(valorinicial == False):
             dictionary["musica"] = "Silencio"
-        else:
-            dictionary["musica"] = "Sonando"
-
-    if(command_selected == "luces"):
-        if (dictionary["luces"] == "Encendidas"):
             dictionary["luces"] = "Apagadas"
-        else:
-            dictionary["luces"] = "Encendidas" 
-
-    if(command_selected == "puerta"):
-        if(dictionary["puerta"] == "Abierta"):
             dictionary["puerta"] = "Cerrada"
-        else:
-            dictionary["puerta"] = "Abierta" 
-
-    output = json.dumps(dictionary)
-    
-    print(dictionary)
-    print(output)
-
-    if i>2000:
-        for ind in range(len(data_captured)):
-            if x == ind:    
-                data_captured[ind][1] = 0.99609
+            valorinicial = True
+        if(command_selected == "musica"):
+            if (dictionary["musica"] == "Sonando"):
+                dictionary["musica"] = "Silencio"
             else:
-                data_captured[ind][1] = 0.0 
-        i=0
-        x+=1
-        if x == 4:
-            x = 0
-    
-    client.publish(topic, output)
-
-    #print("Los datos recibidos son:")
-    #print(data_captured)
-    #print("Identificando comando recibido...")
-    #print("El comando es: " + command_selected + "\n")
+                dictionary["musica"] = "Sonando"
+        if(command_selected == "luces"):
+            if (dictionary["luces"] == "Encendidas"):
+                dictionary["luces"] = "Apagadas"
+            else:
+                dictionary["luces"] = "Encendidas" 
+        if(command_selected == "puerta"):
+            if(dictionary["puerta"] == "Abierta"):
+                dictionary["puerta"] = "Cerrada"
+            else:
+                dictionary["puerta"] = "Abierta" 
+        output = json.dumps(dictionary)
+        lista = []
+        j = 0
+        print("\nData to send:")
+        print(output)
+        print("\n")
+        client.publish(topic, output)
