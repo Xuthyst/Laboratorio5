@@ -21,6 +21,7 @@ client.connect(broker, port, keepalive=60)
 
 i = 0
 x = 0
+valorinicial = False
 lista = []
 data_captured = [['luces', 0.0], ['musica', 0.0], ['puerta', 0.99609], ['ruido', 0.0]]
 dictionary = dict() 
@@ -39,11 +40,12 @@ while (1):
     dictionary["command"] = command_selected
 
     #Valores Iniciales
-    dictionary["musica"] = "Silencio"
-    dictionary["luces"] = "Apagadas"
-    dictionary["puerta"] = "Cerrada"
+    if(valorinicial == False):
+        dictionary["musica"] = "Silencio"
+        dictionary["luces"] = "Apagadas"
+        dictionary["puerta"] = "Cerrada"
+        valorinicial = True
 
-    print(command_selected)
     if(command_selected == "musica"):
         if (dictionary["musica"] == "Sonando"):
             dictionary["musica"] = "Silencio"
