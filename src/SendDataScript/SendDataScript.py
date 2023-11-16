@@ -42,8 +42,8 @@ while(1):
     lista.append(data_captured)
     i+=1   
     j+=1
-    val_max = 0
-    command_selected = ""
+    val_max = 0.6
+    command_selected = "ruido"
     if(j == 4):
         for item in lista:
             if(item[1] > val_max):
