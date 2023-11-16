@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import paho.mqtt.client as mqtt
 import json
+import time
 #Functions
 def on_publish(client,userdata,result):             #create function for callback
     print("data published to thingsboard \n")
@@ -25,6 +26,7 @@ data_captured = [['luces', 0.0], ['musica', 0.0], ['puerta', 0.99609], ['ruido',
 dictionary = dict() 
 
 while (1):  
+    time.sleep(2)
     i+=1
     val_max = 0
     command_selected = ""
@@ -36,31 +38,34 @@ while (1):
     
     dictionary["command"] = command_selected
 
+    #Valores Iniciales
+    dictionary["musica"] = "Silencio"
+    dictionary["luces"] = "Apagadas"
+    dictionary["puerta"] = "Cerrada"
+
+    print(command_selected)
     if(command_selected == "musica"):
-        dictionary["musica"] = "Sonando"
-    else:
-        dictionary["musica"] = "Silencio"
+        if (dictionary["musica"] == "Sonando"):
+            dictionary["musica"] = "Silencio"
+        else:
+            dictionary["musica"] = "Sonando"
 
     if(command_selected == "luces"):
-        dictionary["luces"] = "Encendidas"
-    else:
-        dictionary["luces"] = "Apagadas" 
+        if (dictionary["luces"] == "Encendidas"):
+            dictionary["luces"] = "Apagadas"
+        else:
+            dictionary["luces"] = "Encendidas" 
 
     if(command_selected == "puerta"):
-        dictionary["puerta"] = "Abierta"
-    else:
-        dictionary["puerta"] = "Cerrada" 
-
-    if(command_selected == "ruido"):
-        dictionary["ruido"] = "Ruido"
-    else:
-        dictionary["ruido"] = "No Ruido" 
+        if(dictionary["puerta"] == "Abierta"):
+            dictionary["puerta"] = "Cerrada"
+        else:
+            dictionary["puerta"] = "Abierta" 
 
     output = json.dumps(dictionary)
     
-    if i>5:
-        print(dictionary)
-        print(output)
+    print(dictionary)
+    print(output)
 
     if i>2000:
         for ind in range(len(data_captured)):
